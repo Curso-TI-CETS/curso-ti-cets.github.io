@@ -1948,7 +1948,7 @@ input, select, textarea {
 		color: #fff !important;
 		text-decoration: none;
 		padding: 0.75em 2.5em 0.75em 2.5em;
-		background-color: #8ebebc;
+		background-color: #8ebebc!important;
 		border: 0;
 		cursor: pointer;
 		background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15)), url("images/overlay.png");
@@ -2249,7 +2249,7 @@ input, select, textarea {
 			#main > section.one {
 				background-color: #81918E;
 				height:  100vh;
-				background-image: url("../../images/banner.jpg");
+				background-image: url("../../images/frenteop.png");
 				/* margin-bottom: 70px; */
 			}
 
