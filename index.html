@@ -19,6 +19,16 @@
 		crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="assets/css/main.css" />
 
+	<style>
+		.hidden {
+			display: none;
+		}
+
+		.table tbody tr.page td {
+			font-weight: bold;
+		}
+	</style>
+
 </head>
 
 <body class="is-preload">
@@ -138,6 +148,82 @@
 						</article>
 					</div>
 				</div>
+
+				<p class="d-inline-flex gap-1" style="padding-top: 50px;">
+					<a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
+						aria-expanded="false" aria-controls="collapseExample">
+						Ver todas notícias
+					</a>
+				</p>
+				<div class="collapse" id="collapseExample">
+					<div class="card card-body">
+
+
+						<div class="container">
+							<div id="pagination-demo">
+								<table class="table table-sm table-striped" style="font-size: 16px;">
+									<thead>
+										<tr>
+											<th>Data da Notícia</th>
+											<th>Notícia</th>
+										</tr>
+									</thead>
+									<tbody class="table-group-divider">
+										<!-- Linhas de dados mokados -->
+										<tr class="page">
+											<td style="color: blue;">01/03/2024</td>
+											<td> <a href="">Dados mokados 1</a></td>
+										</tr>
+
+										<!-- Repita isso para as próximas 17 linhas de dados mokados -->
+									</tbody>
+								</table>
+							</div>
+
+							<button id="prevBtn" class="btn btn-primary">Anterior</button>
+							<button id="nextBtn" class="btn btn-primary">Próxima</button>
+						</div>
+					</div>
+				</div>
+
+				<script>
+					let currentPage = 0;
+					const itemsPerPage = 10;
+					const pages = document.querySelectorAll('.page');
+
+					function showPage(pageIndex) {
+						const startIndex = pageIndex * itemsPerPage;
+						const endIndex = startIndex + itemsPerPage;
+
+						pages.forEach((page, index) => {
+							if (index >= startIndex && index < endIndex) {
+								page.classList.remove('hidden');
+							} else {
+								page.classList.add('hidden');
+							}
+						});
+					}
+
+					function goToNextPage() {
+						if (currentPage < Math.ceil(pages.length / itemsPerPage) - 1) {
+							currentPage++;
+							showPage(currentPage);
+						}
+					}
+
+					function goToPrevPage() {
+						if (currentPage > 0) {
+							currentPage--;
+							showPage(currentPage);
+						}
+					}
+
+					document.getElementById('prevBtn').addEventListener('click', goToPrevPage);
+					document.getElementById('nextBtn').addEventListener('click', goToNextPage);
+
+					// Exibir a primeira página inicialmente
+					showPage(currentPage);
+				</script>
 
 			</div>
 		</section>
@@ -472,16 +558,7 @@
 															</tr>
 															<tr>
 																	<th colspan="6" style="text-align: center;" scope="row">BNCC</th>
-															
 															</tr>
-															<tr>
-																<td style="text-align: center;" scope="row">-</td>
-																<td>-</td>
-																<td>-</td>
-																<td>-</td>
-																 
-															</tr>
-															 
 														</tbody>
 													</table>
 												</div>
